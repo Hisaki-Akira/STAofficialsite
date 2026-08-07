@@ -27,7 +27,6 @@
 const seatGrid = document.querySelector('#seat-grid');
 if (seatGrid) {
   const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
-  const tips = ['シートピッチ快適。ゆったりとVR体験を楽しめます。', 'メインスクリーンが見やすいおすすめ座席です。', '通路側。入退室しやすく、移動もスムーズです。', '没入感のあるバーチャル飛行体験をお楽しみください。'];
   for (let row = 1; row <= 6; row += 1) {
     const rowEl = document.createElement('div');
     rowEl.className = 'seat-row';
@@ -37,8 +36,7 @@ if (seatGrid) {
       const seat = document.createElement('button');
       const number = `${row}${letter}`;
       seat.type = 'button'; seat.className = 'class-seat'; seat.textContent = number;
-      const tip = document.createElement('span'); tip.className = 'seat-tip'; tip.textContent = tips[(row + index) % tips.length];
-      seat.appendChild(tip); rowEl.appendChild(seat);
+      rowEl.appendChild(seat);
     });
     seatGrid.appendChild(rowEl);
   }

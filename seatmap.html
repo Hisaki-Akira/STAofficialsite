@@ -2,17 +2,17 @@
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>機材・座席表 | STA</title><link rel="stylesheet" href="portal.css"><script src="portal.js" defer></script></head>
 <body><div class="top"></div><header><div class="head"><a class="logo" href="index.html"><img src="assets/stalogo-blue.png" alt="STA Shibaura Tech Airways"></a><nav><a href="index.html">ホーム</a><a href="destinations.html">就航都市・ガイド</a><a href="seatmap.html">機材・座席表</a><a href="access.html">搭乗口・アクセス</a><a class="reserve" href="https://hisaki-akira.github.io/ticket-system/">空席照会・予約（無料）</a></nav></div></header>
 <section class="page-header"><div class="container"><p class="page-category">AIRCRAFT &amp; SEATMAP</p><h1 class="page-title">機材・座席表案内</h1><p class="page-subtitle">ボーイング787-9（しばかっしー特別塗装機）の21席キャビン</p></div></section>
-<main class="classroom-layout"><section class="classroom-cabin seat-only-cabin" aria-label="B787-9 座席表"><section class="seat-zone"><p class="seat-zone-title">ECONOMY CLASS · 21 SEATS · 3-3 配列 / 中央通路</p><div id="seat-grid" class="seat-grid"></div></section></section><div class="layout-note">座席をタップまたはホバーすると、座席の案内が表示されます。</div></main>
+<main class="classroom-layout"><section class="classroom-cabin seat-only-cabin" aria-label="B787-9 座席表"><section class="seat-zone"><p class="seat-zone-title">ECONOMY CLASS · 21 SEATS · 2-3-2 配列</p><div id="seat-grid" class="seat-grid"></div></section></section><div class="layout-note">座席をタップまたはホバーすると、座席の案内が表示されます。</div></main>
 <footer><div class="footer-inner"><div class="footer-brand">STA <span>Shibaura Tech Airways</span></div><nav class="footer-nav"><a href="#">企業情報</a><a href="#">お問い合わせ</a><a href="#">プライバシーポリシー</a></nav><p>※STAは増穂祭（芝浦工業大学柏中学校 3-C）限定の架空の航空会社です</p></div></footer>
 <script>
 const grid = document.querySelector('#seat-grid');
 const tips = ['シートピッチ快適。ゆったり体験できます。', 'メインスクリーンが見やすい座席です。', '通路側。入退室しやすい座席です。'];
 if (grid) {
-  for (let row = 1; row <= 4; row += 1) {
+  const letters = ['A', 'C', 'D', 'E', 'G', 'H', 'K'];
+  for (let row = 1; row <= 3; row += 1) {
     const rowEl = document.createElement('div'); rowEl.className = 'seat-row';
-    ['A', 'B', 'C', 'D', 'E', 'F'].forEach((letter, index) => {
-      if (index === 3) { const aisle = document.createElement('span'); aisle.className = 'aisle'; aisle.textContent = '通路'; rowEl.appendChild(aisle); }
-      if (row === 4 && index >= 3) { const blank = document.createElement('span'); rowEl.appendChild(blank); return; }
+    letters.forEach((letter, index) => {
+      if (index === 2 || index === 5) { const aisle = document.createElement('span'); aisle.className = 'aisle'; aisle.textContent = '通路'; rowEl.appendChild(aisle); }
       const seat = document.createElement('button'); seat.type = 'button'; seat.className = 'class-seat'; seat.textContent = `${row}${letter}`;
       const tip = document.createElement('span'); tip.className = 'seat-tip'; tip.textContent = tips[index % tips.length]; seat.appendChild(tip); rowEl.appendChild(seat);
     });
